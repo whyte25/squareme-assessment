@@ -7,7 +7,7 @@ export const paths = {
     transfers: "#",
     get_started: "#",
     accounts: "#",
-    transactions: "#",
+    transactions: "/dashboard/transactions",
     settings: "#",
   },
 };

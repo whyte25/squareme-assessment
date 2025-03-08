@@ -104,12 +104,12 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         </SidebarGroup>
       </SidebarContent>
       <SidebarFooter>
-        <SidebarMenuButton className="h-10 px-3" asChild>
+        <SidebarMenuButton className="h-10 items-center px-3 pb-2.5" asChild>
           <Link scroll={false} href={paths.auth.login}>
             <span>
-              <Icons.logout className="size-5" />
+              <Icons.logout className="size-5 shrink-0" />
             </span>
-            {!isCollapsed && <span>Logout</span>}
+            {!isCollapsed && <span className="mb-0.5">Logout</span>}
           </Link>
         </SidebarMenuButton>
       </SidebarFooter>

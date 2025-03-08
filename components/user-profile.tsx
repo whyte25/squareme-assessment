@@ -10,12 +10,6 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-interface UserProfileProps {
-  name: string;
-  plan: string;
-  image?: string;
-}
-
 export const UserProfile = () => {
   return (
     <DropdownMenu>

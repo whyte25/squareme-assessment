@@ -1,16 +1,5 @@
 import type { NextConfig } from "next";
-import { paths } from "./constants/paths";
 
-const nextConfig: NextConfig = {
-  redirects: async () => {
-    return [
-      {
-        source: "/",
-        destination: paths.private.programs,
-        permanent: true,
-      },
-    ];
-  },
-};
+const nextConfig: NextConfig = {};
 
 export default nextConfig;
