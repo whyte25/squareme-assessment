@@ -10,14 +10,15 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { ClientCookies } from "@/lib/cookies.client";
 import { cn } from "@/lib/utils";
+import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { toast } from "../ui/notify-utils";
+import { toast } from "../ui/notify-provider";
 
 export function LoginForm({
   className,
-  ...props
 }: React.ComponentPropsWithoutRef<"div">) {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
@@ -30,18 +31,23 @@ export function LoginForm({
       duration: Infinity,
     });
 
+    const formData = new FormData(event.currentTarget);
+    const password = formData.get("password") as string;
+
     setTimeout(() => {
       setIsLoading(false);
+      ClientCookies.set("password", password);
       toast.success("Login successful!", { id: toastId });
       router.push("/");
     }, 2000);
   };
 
   return (
-    <div
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8 }}
       className={cn("flex flex-col gap-6", className)}
-      data-testid="login-form-container"
-      {...props}
     >
       <Card>
         <CardHeader>
@@ -113,6 +119,6 @@ export function LoginForm({
           </form>
         </CardContent>
       </Card>
-    </div>
+    </motion.div>
   );
 }
