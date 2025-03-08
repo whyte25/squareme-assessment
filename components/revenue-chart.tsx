@@ -162,7 +162,7 @@ export function RevenueChart() {
             <div className="flex items-center justify-between space-y-0.5 md:block">
               <div className="flex items-center gap-2">
                 <p className="font-semibold text-muted-foreground">Revenue</p>
-                <Badge className="hidden border-none bg-transparent text-[#424242] md:block">
+                <Badge className="pointer-events-none hidden border-none bg-transparent text-[#424242] md:block">
                   <span className="mr-1.5 text-emerald-500">+0.00% </span> vs
                   Last 7 days
                 </Badge>

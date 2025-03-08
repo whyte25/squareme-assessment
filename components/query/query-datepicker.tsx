@@ -58,8 +58,8 @@ export const QueryDatePicker: React.FC<QueryDatePickerProps> = ({
         <Button
           variant="ghost"
           className={cn(
-            "w-fit items-center justify-start bg-white rounded border text-left font-medium text-black hover:text-primary",
-            !date && "text-muted-foreground"
+            "w-fit items-center justify-start rounded border bg-white text-left font-medium text-black hover:text-primary",
+            !date && "text-muted-foreground",
           )}
         >
           <CalendarDays size={15} className="mr-2 h-[17px] text-gray-500" />
@@ -85,7 +85,7 @@ export const QueryDatePicker: React.FC<QueryDatePickerProps> = ({
           onSelect={setDate}
           numberOfMonths={2}
         />
-        <div className="flex items-center justify-end gap-2 mb-3 mr-5">
+        <div className="mb-3 mr-5 flex items-center justify-end gap-2">
           <Button
             size={"sm"}
             variant="outline"

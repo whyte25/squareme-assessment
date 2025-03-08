@@ -60,7 +60,7 @@ export function LoginForm({
                 <Input
                   id="email"
                   type="email"
-                  defaultValue="Support@mymently.com"
+                  defaultValue="support@squareme.com"
                   required
                   data-testid="login-email"
                 />

@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { useDeleteLead } from "@/hooks/mutations/use-delete-lead";
+import { useDeleteTransaction } from "@/hooks/mutations/use-delete-transaction";
 import { cn } from "@/lib/utils";
 import { Table } from "@tanstack/react-table";
 import { Trash2 } from "lucide-react";
@@ -19,10 +19,10 @@ export const DeleteRows = ({ table, className }: DeleteRowsProps) => {
     .getSelectedRowModel()
     .rows?.map((row) => row.original.id);
 
-  const { mutate: deleteLead, isPending } = useDeleteLead();
+  const { mutate: deleteLead, isPending } = useDeleteTransaction();
 
   const handleDelete = () => {
-    deleteLead({ lead_ids: selectedRows });
+    deleteLead({ transaction_ids: selectedRows });
     setIsDeleteModalOpen(false);
   };
 
@@ -32,20 +32,20 @@ export const DeleteRows = ({ table, className }: DeleteRowsProps) => {
     <>
       <Button
         className={cn(
-          "h-8 w-fit !cursor-pointer  absolute z-50 left-44 md:left-auto  md:right-4 top-2",
-          className
+          "absolute left-44 top-2 z-50 h-8 w-fit !cursor-pointer md:left-auto md:right-0",
+          className,
         )}
         variant="outline"
         onClick={() => setIsDeleteModalOpen(true)}
       >
         <Trash2
-          className=" opacity-60"
+          className="opacity-60"
           size={16}
           strokeWidth={2}
           aria-hidden="true"
         />
 
-        <span className=" inline-flex h-5 max-h-full items-center rounded border border-border bg-background px-1 font-[inherit] text-[0.625rem] font-medium text-muted-foreground/70">
+        <span className="inline-flex h-5 max-h-full items-center rounded border border-border bg-background px-1 font-[inherit] text-[0.625rem] font-medium text-muted-foreground/70">
           {selectedRowsLength}
         </span>
       </Button>

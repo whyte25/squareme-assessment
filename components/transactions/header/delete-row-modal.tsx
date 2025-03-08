@@ -8,7 +8,7 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
-import { Lead } from "@/types";
+import { Transaction } from "@/types";
 import { CircleAlert } from "lucide-react";
 
 interface DeleteModalProps {
@@ -16,7 +16,7 @@ interface DeleteModalProps {
   isOpen: boolean;
   onClose: () => void;
   selectedRowsLength?: number;
-  singleRow?: Lead;
+  singleRow?: Transaction;
   isPending?: boolean;
 }
 
@@ -53,7 +53,7 @@ export const DeleteRowModal = ({
                   {selectedRowsLength === 1 ? "row" : "rows"}
                 </>
               ) : (
-                <>the lead for {singleRow?.full_name}</>
+                <>the transaction with ID {singleRow?.id}</>
               )}
               .
             </AlertDialogDescription>

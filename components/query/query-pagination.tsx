@@ -4,13 +4,6 @@ import {
   PaginationEllipsis,
   PaginationItem,
 } from "@/components/ui/pagination";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import { PaginationMetadata } from "@/types";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { parseAsInteger, useQueryState } from "nuqs";
@@ -20,31 +13,21 @@ import { Button } from "../ui/button";
 interface QueryPaginationProps {
   current_page: PaginationMetadata["current_page"];
   total_pages: PaginationMetadata["total_pages"];
+  total_items: PaginationMetadata["total_items"];
 }
 
 export function QueryPagination({
   current_page,
   total_pages,
+  total_items,
 }: QueryPaginationProps) {
   const [isRefetching, startTransition] = useTransition();
   const [, setPage] = useQueryState("page", parseAsInteger.withDefault(1));
-  const [limit, setLimit] = useQueryState(
-    "limit",
-    parseAsInteger.withDefault(10)
-  );
+  const [limit] = useQueryState("limit", parseAsInteger.withDefault(6));
 
   const handlePageChange = async (newPage: number) => {
     startTransition(async () => {
       await setPage(newPage);
-    });
-  };
-
-  const handleLimitChange = async (newLimit: string) => {
-    startTransition(async () => {
-      await Promise.all([
-        setLimit(parseInt(newLimit)),
-        setPage(1), // Reset to first page when changing items per page
-      ]);
     });
   };
 
@@ -87,36 +70,20 @@ export function QueryPagination({
   const pages = getPageNumbers();
 
   return (
-    <div className="flex items-center justify-between border-t gap-3 px-2 py-2.5 max-sm:flex-col">
+    <div className="flex items-center justify-between gap-3 border-t px-2 py-2.5 max-sm:flex-col">
       <div className="flex justify-start">
-        <Select
-          value={String(limit)}
-          onValueChange={handleLimitChange}
-          aria-label="Results per page"
-        >
-          <SelectTrigger
-            id="results-per-page"
-            className="w-fit  border-none whitespace-nowrap"
-          >
-            <SelectValue placeholder="Select number of results" />
-          </SelectTrigger>
-          <SelectContent>
-            {[10, 20, 30, 40, 50].map((pageSize) => (
-              <SelectItem key={pageSize} value={String(pageSize)}>
-                {pageSize} per page
-              </SelectItem>
-            ))}
-          </SelectContent>
-        </Select>
+        <p className="text-sm text-[#696D8C]">
+          Showing {limit * current_page} of {total_items} results
+        </p>
       </div>
-      <div className="md:-ml-10 justify-center">
+      <div className="justify-center md:-ml-10">
         <Pagination>
           <PaginationContent>
             <PaginationItem>
               <Button
                 size="icon"
                 variant="outline"
-                className="disabled:pointer-events-none h-8 w-8 disabled:bg-gray-100 disabled:opacity-50"
+                className="h-8 w-8 disabled:pointer-events-none disabled:bg-gray-100 disabled:opacity-50"
                 onClick={() => handlePageChange(current_page - 1)}
                 disabled={current_page === 1 || isRefetching}
                 aria-label="Go to previous page"
@@ -153,7 +120,7 @@ export function QueryPagination({
               <Button
                 size="icon"
                 variant="outline"
-                className="disabled:pointer-events-none h-8 w-8 disabled:opacity-50"
+                className="h-8 w-8 disabled:pointer-events-none disabled:opacity-50"
                 onClick={() => handlePageChange(current_page + 1)}
                 disabled={current_page === total_pages}
                 aria-label="Go to next page"

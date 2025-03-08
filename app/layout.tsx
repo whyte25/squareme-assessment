@@ -1,4 +1,4 @@
-import { ToastProvider } from "@/components/ui/notify-provider";
+import AppProvider from "@/components/providers/Provider";
 import { images } from "@/constants/image";
 import { siteConfig } from "@/constants/site-config";
 import type { Metadata } from "next";
@@ -62,10 +62,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${chivo.variable} ${inter.variable} antialiased`}>
-        <ToastProvider duration={3000} position={"top-right"}>
-          {children}
-        </ToastProvider>
+      <body className={`${inter.variable} antialiased`}>
+        <AppProvider>{children}</AppProvider>
       </body>
     </html>
   );

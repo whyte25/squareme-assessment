@@ -5,7 +5,7 @@ export default function DashboardPage() {
   return (
     <div className="space-y-6 py-6 md:space-y-10">
       <div className="border-b pb-3">
-        <h1 className="before:contents-[''] relative border-primary text-lg font-semibold before:absolute before:-bottom-3 before:h-0.5 before:w-36 before:bg-primary">
+        <h1 className="before:contents-[''] relative border-primary text-base font-semibold before:absolute before:-bottom-3 before:h-0.5 before:w-36 before:bg-primary">
           Online Payments
         </h1>
       </div>
