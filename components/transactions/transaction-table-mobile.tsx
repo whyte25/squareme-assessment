@@ -1,7 +1,7 @@
+import { QueryPagination } from "@/components/query/query-pagination";
 import { Transaction } from "@/types";
 import { TransactionsHeader } from "./header/transactions-header";
 import { TransactionCard } from "./transaction-card";
-import { QueryPagination } from "@/components/query/query-pagination";
 
 interface ITransactionTableMobile {
   transactions: Transaction[];
@@ -19,17 +19,19 @@ export const TransactionTableMobile = ({
   return (
     <div className="flex w-full flex-col gap-3">
       <TransactionsHeader />
-      
-      <div className="flex flex-col gap-4 mt-2">
-        {transactions.map((transaction) => (
+
+      <div className="mt-2 flex flex-col gap-4">
+        {transactions?.map((transaction) => (
           <TransactionCard key={transaction.id} transaction={transaction} />
         ))}
       </div>
-      
-      <QueryPagination 
-        current_page={pagination?.current_page || 1} 
-        total_pages={pagination?.total_pages || Math.ceil(transactions.length / 6)} 
-        total_items={pagination?.total_items || transactions.length}
+
+      <QueryPagination
+        current_page={pagination?.current_page || 1}
+        total_pages={
+          pagination?.total_pages || Math.ceil(transactions?.length / 6)
+        }
+        total_items={pagination?.total_items || transactions?.length}
       />
     </div>
   );
