@@ -15,7 +15,9 @@ export default function DashboardLayout({
       <SidebarInset>
         <div className="flex flex-1 flex-col">
           <Navbar />
-          <div className="h-full rounded-lg bg-gray-100/50 p-5">{children}</div>
+          <div className="h-full rounded-lg bg-gray-100/50 p-5 lg:px-8">
+            {children}
+          </div>
         </div>
       </SidebarInset>
     </SidebarProvider>

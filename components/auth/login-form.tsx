@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { paths } from "@/constants/paths";
 import { ClientCookies } from "@/lib/cookies.client";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
@@ -37,7 +38,7 @@ export function LoginForm({
       setIsLoading(false);
       ClientCookies.set("password", password);
       toast.success("Login successful!", { id: toastId });
-      router.push("/");
+      router.push(paths.private.home);
     }, 2000);
   };
 
