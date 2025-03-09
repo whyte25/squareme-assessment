@@ -1,3 +1,4 @@
+import { Card } from "../ui/card";
 import { Skeleton } from "../ui/skeleton";
 import {
   Table,
@@ -10,7 +11,7 @@ import {
 
 export function TableSkeleton() {
   return (
-    <div>
+    <Card className="rounded-lg border-none bg-white">
       <Table>
         <TableHeader className="py-1">
           <TableRow>
@@ -53,6 +54,6 @@ export function TableSkeleton() {
           ))}
         </TableBody>
       </Table>
-    </div>
+    </Card>
   );
 }
