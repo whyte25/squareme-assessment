@@ -1,42 +1,54 @@
 # Frontend Developer Assessment - Squareme
 
-A technical assessment I implemented for the Frontend Developer position at Squareme, focusing on building the program's dashboard page using Next.js.
+A technical assessment I implemented for the Frontend Developer position at Squareme, focusing on building the dashboard using Next.js.
 
 ## Tech Stack
 
-- [Next.js 14](https://nextjs.org/):
+- [Next.js 15](https://nextjs.org/)
+- [React 19](https://react.dev/)
+- [Tanstack Query](https://tanstack.com/query/latest)
+- [Tanstack Table](https://tanstack.com/table/v8)
 - [Tailwind CSS](https://tailwindcss.com/)
 - [shadcn/ui](https://ui.shadcn.com/)
-- [Tiptap](https://tiptap.dev)
-- [Reusables](https://reusables.vercel.app/) - [Toast](https://reusables.vercel.app/docs/components/notify) built by me 😎
+- [Reusables](https://reusables.vercel.app/) - [Toast](https://reusables.vercel.app/docs/components/notify)
 - [Framer Motion](https://www.framer.com/motion/)
 - [Vitest](https://vitest.dev/)
+- [Nuqs](https://nuqs.47ng.com/)
 
 ## Features
 
 - Mock Authentication with protected routes
-- Programs dashboard page
-- Rich text editor integration
-- Responsive design
-- Unit testing
-- Mobile Responsiveness
+- dashboard page with data visualization
+- Transaction management and filtering
+- Responsive design with mobile-first approach
+- Unit testing with Vitest and React Testing Library
+- State management with Tanstack Query
+- Modern UI components with Shadcn UI
 
 ## Project Structure
 
 ```
 ├── app/                # Next.js app directory
+│   ├── (main)/         # Main layout routes
+│   ├── api/            # API routes
+│   └── login/          # Authentication pages
 ├── assets/             # Static assets
 ├── components/         # React components
 │   ├── ui/             # Reusable UI components
-│   └── editor/         # Rich text editor components
-|   └── programs/       # Program components
-├── data/               # Mock data
+│   ├── auth/           # Authentication components
+│   ├── transactions/   # Transaction related components
+│   └── skeleton/       # Loading skeleton components
 ├── constants/          # Configuration and constants
+├── data/               # Mock data
 ├── hooks/              # Custom React hooks
+│   ├── mutations/      # Tanstack Query mutations
+│   └── queries/        # Tanstack Query queries
 ├── lib/                # Utility functions
-├── _tests_/            # Unit tests
-└── middleware/         # Middleware
-
+├── services/           # API services
+│   ├── api/            # API implementations
+│   └── endpoints/      # API endpoints
+├── __tests__/         # Unit tests
+└── middleware/        # Authentication middleware
 ```
 
 ## Setup
@@ -57,6 +69,10 @@ pnpm install
 # or
 bun install
 ```
+
+## Environment Variables
+
+Required environment variable ias listed in `.env.example`.
 
 ### Development
 
@@ -84,9 +100,9 @@ pnpm test
 bun run test
 ```
 
-### Deploymennt
+### Deployment
 
-Deployed to Netlify: [https://fas-Squareme-fe-assessment.netlify.app](https://fas-Squareme-fe-assessment.netlify.app/dashboard/programs)
+Deployed to Netlify: [https://fas-Squareme-fe-assessment.netlify.app](https://fas-squareme-fe-assessment.netlify.app)
 
 ## Note
 
