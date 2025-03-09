@@ -22,7 +22,11 @@ export function Logo({
       className={cn("flex w-full items-center gap-2", linkClassName)}
       data-testid="logo-link-id"
     >
-      {logoWithText ? <Icons.logo /> : <Icons.logoIcon className={className} />}
+      {logoWithText ? (
+        <Icons.logo data-testid="logo-text-icon" />
+      ) : (
+        <Icons.logoIcon data-testid="logo-icon" className={className} />
+      )}
     </Link>
   );
 }

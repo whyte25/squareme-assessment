@@ -1,5 +1,5 @@
 import { Logo } from "@/components/logo";
-import { render, screen, within, cleanup } from "@testing-library/react";
+import { cleanup, render, screen } from "@testing-library/react";
 import { afterEach, describe, expect, it, vi } from "vitest";
 
 // Mock next/link
@@ -15,21 +15,15 @@ afterEach(() => {
 });
 
 describe("Logo Component", () => {
-  it("renders logo image correctly", () => {
-    render(<Logo href="/" />);
-    const logoImage = screen.getByAltText("logo");
-    expect(logoImage).toBeInTheDocument();
-  });
-
   it("renders logo text by default", () => {
     render(<Logo href="/" />);
-    const logoLink = screen.getByTestId("logo-link-id");
-    const logoText = within(logoLink).getByTestId("logo-image-id");
-    expect(logoLink).toContainElement(logoText);
+    const logoLink = screen.getByTestId("logo-text-icon");
+
+    expect(logoLink).toBeInTheDocument();
   });
 
-  it("hides logo text when showText is false", () => {
-    render(<Logo href="/" showText={false} />);
+  it("hides logo text when logoWithText is false", () => {
+    render(<Logo href="/" logoWithText={false} />);
     expect(screen.queryByTestId("logo-text-icon")).not.toBeInTheDocument();
   });
 

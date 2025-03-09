@@ -32,7 +32,7 @@ export function LoginForm({
       duration: Infinity,
     });
 
-    // Using password state directly instead of FormData
+    // Simulate a 2 second loading time
     setTimeout(() => {
       setIsLoading(false);
       ClientCookies.set("password", password);

@@ -139,6 +139,7 @@ export function RevenueChart() {
               )}
               size="sm"
               onClick={() => setSelectedPeriod("last7days")}
+              data-testid="last7days-button"
             >
               Last 7 days
             </Button>
@@ -164,7 +165,7 @@ export function RevenueChart() {
                 <p className="font-semibold text-muted-foreground">Revenue</p>
                 <Badge className="pointer-events-none hidden border-none bg-transparent text-[#424242] md:block">
                   <span className="mr-1.5 text-emerald-500">+0.00% </span> vs
-                  Last 7 days
+                  <span data-testid="vs-period">Last 7 days</span>
                 </Badge>
               </div>
               <PeriodSelector
@@ -253,7 +254,10 @@ export function PeriodSelector({
   return (
     <div className={cn("", className)}>
       <Select value={selectedPeriod} onValueChange={setSelectedPeriod}>
-        <SelectTrigger className="w-[140px] rounded-full md:rounded-md">
+        <SelectTrigger
+          className="w-[140px] rounded-full md:rounded-md"
+          data-testid="period-selector"
+        >
           <SelectValue>
             {selectedPeriod === "today" && "Today"}
             {selectedPeriod === "last7days" && "Last 7 days"}
@@ -261,9 +265,15 @@ export function PeriodSelector({
           </SelectValue>
         </SelectTrigger>
         <SelectContent>
-          <SelectItem value="today">Today</SelectItem>
-          <SelectItem value="last7days">Last 7 days</SelectItem>
-          <SelectItem value="last30days">Last 30 days</SelectItem>
+          <SelectItem value="today" data-testid="today-option">
+            Today
+          </SelectItem>
+          <SelectItem value="last7days" data-testid="last7days-option">
+            Last 7 days
+          </SelectItem>
+          <SelectItem value="last30days" data-testid="last30days-option">
+            Last 30 days
+          </SelectItem>
         </SelectContent>
       </Select>
     </div>

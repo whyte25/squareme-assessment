@@ -1,4 +1,5 @@
-import { LoginForm } from "@/components/login-form";
+import { LoginForm } from "@/components/auth/login-form";
+import { toast } from "@/components/ui/notify";
 import { fireEvent, render, screen } from "@testing-library/react";
 import { useRouter } from "next/navigation";
 import { beforeEach, describe, expect, it, vi } from "vitest";
@@ -8,9 +9,9 @@ vi.mock("next/navigation", () => ({
   useRouter: vi.fn(),
 }));
 
-vi.mock("@/components/ui/notify-utils", () => ({
+vi.mock("@/components/ui/notify", () => ({
   toast: {
-    loading: vi.fn(),
+    loading: vi.fn().mockReturnValue("toast-id"),
     success: vi.fn(),
   },
 }));
@@ -50,9 +51,9 @@ describe("LoginForm", () => {
     render(<LoginForm />);
 
     expect(screen.getByTestId("login-email")).toHaveValue(
-      "Support@mymently.com",
+      "support@squareme.com",
     );
-    expect(screen.getByTestId("login-password")).toHaveValue("required");
+    expect(screen.getByTestId("login-password")).toHaveValue("1234567");
   });
 
   it("handles form submission correctly", async () => {
@@ -68,6 +69,12 @@ describe("LoginForm", () => {
 
     // Submit the form
     fireEvent.click(loginButton);
+
+    // Check if loading state is set
+    expect(loginButton).toHaveTextContent("Logging in...");
+    expect(toast.loading).toHaveBeenCalledWith("Logging in...", {
+      duration: Infinity,
+    });
   });
 
   it("requires email and password fields", () => {
