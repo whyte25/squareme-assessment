@@ -12,7 +12,7 @@ export function TableSkeleton() {
   return (
     <div>
       <Table>
-        <TableHeader className="bg-[#F7F8FD] py-1">
+        <TableHeader className="py-1">
           <TableRow>
             <TableHead className="w-[28px]">
               <Skeleton className="h-4 w-4" />
@@ -26,7 +26,7 @@ export function TableSkeleton() {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {[0, 1, 2, 3, 4].map((_, i) => (
+          {[0, 1, 2, 3, 4, 6, 7, 8].map((_, i) => (
             <TableRow key={i}>
               <TableCell className="w-[28px]">
                 <Skeleton className="h-4 w-4" />
