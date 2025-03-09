@@ -1,9 +1,16 @@
+import { paths } from "@/constants/paths";
 import { Card } from "../ui/card";
+import { GoBack } from "../ui/go-back";
 import { Skeleton } from "../ui/skeleton";
 
 export function TransactionTableMobileSkeleton() {
   return (
     <div className="flex w-full flex-col gap-3">
+      <GoBack
+        href={paths.private.home}
+        className="mr-auto"
+        text="Transactions"
+      />
       {/* Header skeleton */}
       <div className="border-b pb-3 pt-5">
         <div className="flex w-full flex-col items-center justify-between gap-3 md:flex-row">

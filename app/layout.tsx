@@ -1,14 +1,10 @@
 import AppProvider from "@/components/providers/Provider";
-import { images } from "@/constants/image";
+import { images } from "@/constants/images";
 import { siteConfig } from "@/constants/site-config";
 import type { Metadata } from "next";
-import { Chivo, Inter } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 
-export const chivo = Chivo({
-  subsets: ["latin"],
-  variable: "--font-chivo-serif",
-});
 export const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter-sans",
