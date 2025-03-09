@@ -6,7 +6,7 @@ import { AnimatePresence, motion } from "framer-motion"
 
 import { cn } from "@/lib/utils"
 
-import { statusStyles, Toast } from "./notify"
+import { Toast } from "./notify"
 import { toast } from "./notify-utils"
 
 export const DEFAULT_CONFIG = {
@@ -87,7 +87,6 @@ export interface ToastClassNames {
 let toastId = 0
 const generateId = () => String(toastId++)
 
-// Add this interface before the ToastProvider component
 export interface ToastProviderProps {
   children: React.ReactNode
   position?: ToastPosition
@@ -99,7 +98,6 @@ export interface ToastProviderProps {
   hideProgressBar?: boolean
 }
 
-// Provider Component
 export function ToastProvider({
   children,
   position: defaultPosition = DEFAULT_CONFIG.position,
@@ -329,5 +327,3 @@ export function ToastProvider({
     </>
   )
 }
-
-export { statusStyles, toast }

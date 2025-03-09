@@ -70,7 +70,7 @@ export function QueryPagination({
   const pages = getPageNumbers();
 
   return (
-    <div className="flex items-center justify-between gap-3 border-t px-2 py-2.5 max-sm:flex-col">
+    <div className="flex items-center justify-between gap-3 border-t px-2 py-2.5 max-sm:flex-col md:px-4">
       <div className="flex justify-start">
         <p className="text-sm text-[#696D8C]">
           Showing {limit * current_page} of {total_items} results
@@ -105,8 +105,8 @@ export function QueryPagination({
                 <PaginationItem key={pageNum}>
                   <Button
                     size="icon"
-                    className="h-8 w-8"
-                    variant={pageNum === current_page ? "default" : "ghost"}
+                    className="h-8 w-8 border-primary"
+                    variant={pageNum === current_page ? "outline" : "ghost"}
                     onClick={() => handlePageChange(pageNum) || isRefetching}
                     aria-current={pageNum === current_page ? "page" : undefined}
                   >
@@ -131,7 +131,6 @@ export function QueryPagination({
           </PaginationContent>
         </Pagination>
       </div>
-      <div className=""></div>
     </div>
   );
 }

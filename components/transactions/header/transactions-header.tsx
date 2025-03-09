@@ -15,7 +15,7 @@ export const TransactionsHeader = () => {
       <div className="flex w-full flex-col items-center justify-between gap-3 md:flex-row">
         <div className="flex w-full items-center justify-between md:w-auto">
           <Select defaultValue="all">
-            <SelectTrigger className="w-[155px] rounded-md border-none bg-transparent pl-0 md:min-w-[155px] md:px-3">
+            <SelectTrigger className="w-[155px] rounded-md border-none bg-transparent pl-0 hover:bg-accent md:min-w-[165px] md:px-3">
               <SelectValue placeholder="All Accounts" />
             </SelectTrigger>
             <SelectContent>

@@ -1,5 +1,5 @@
 "use client";
-import { ToastProvider } from "@/components/ui/notify-provider";
+import { ToastProvider } from "@/components/ui/notify";
 import {
   MutationCache,
   QueryClient,

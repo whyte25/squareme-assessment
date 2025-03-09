@@ -1,5 +1,7 @@
 import { QueryPagination } from "@/components/query/query-pagination";
+import { paths } from "@/constants/paths";
 import { Transaction } from "@/types";
+import { GoBack } from "../ui/go-back";
 import { TransactionsHeader } from "./header/transactions-header";
 import { TransactionCard } from "./transaction-card";
 
@@ -18,6 +20,11 @@ export const TransactionTableMobile = ({
 }: ITransactionTableMobile) => {
   return (
     <div className="flex w-full flex-col gap-3">
+      <GoBack
+        href={paths.private.home}
+        className="mr-auto"
+        text="Transactions"
+      />
       <TransactionsHeader />
 
       <div className="mt-2 flex flex-col gap-4">

@@ -15,13 +15,14 @@ import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { toast } from "../ui/notify-provider";
+import { toast } from "../ui/notify";
 
 export function LoginForm({
   className,
 }: React.ComponentPropsWithoutRef<"div">) {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
+  const [password, setPassword] = useState("1234567");
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -31,15 +32,17 @@ export function LoginForm({
       duration: Infinity,
     });
 
-    const formData = new FormData(event.currentTarget);
-    const password = formData.get("password") as string;
-
+    // Using password state directly instead of FormData
     setTimeout(() => {
       setIsLoading(false);
       ClientCookies.set("password", password);
       toast.success("Login successful!", { id: toastId });
       router.push("/");
     }, 2000);
+  };
+
+  const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setPassword(e.target.value);
   };
 
   return (
@@ -85,7 +88,8 @@ export function LoginForm({
                 <Input
                   id="password"
                   type="password"
-                  defaultValue="required"
+                  value={password}
+                  onChange={handlePasswordChange}
                   required
                   data-testid="login-password"
                 />
